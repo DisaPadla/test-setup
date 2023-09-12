@@ -1,16 +1,25 @@
-import styled from 'styled-components';
+import * as React from 'react';
 
-import NxWelcome from './nx-welcome';
+import { Link, Route, Routes } from 'react-router-dom';
 
-const StyledApp = styled.div`
-  // Your style here
-`;
+const Diagram = React.lazy(() => import('diagram/Module'));
 
 export function App() {
   return (
-    <StyledApp>
-      <NxWelcome title="shell" />
-    </StyledApp>
+    <React.Suspense fallback={null}>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/diagram">Diagram</Link>
+        </li>
+      </ul>
+      <Routes>
+        <Route path="/" element={<div >Hello</div>} />
+        <Route path="/diagram" element={<Diagram />} />
+      </Routes>
+    </React.Suspense>
   );
 }
 

@@ -1,23 +1,22 @@
 {
-  "name": "shell-e2e",
+  "name": "diagram-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/shell-e2e/src",
+  "sourceRoot": "apps/diagram-e2e/src",
   "projectType": "application",
   "targets": {
     "e2e": {
       "executor": "@nx/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/shell-e2e/cypress.config.ts",
-        "devServerTarget": "shell:serve:development",
-        "testingType": "e2e",
-        "baseUrl": "http://localhost:4200"
+        "cypressConfig": "apps/diagram-e2e/cypress.config.ts",
+        "devServerTarget": "diagram:serve:development",
+        "testingType": "e2e"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "shell:serve:production"
+          "devServerTarget": "diagram:serve:production"
         },
         "ci": {
-          "devServerTarget": "shell:serve-static"
+          "devServerTarget": "diagram:serve-static"
         }
       }
     },
@@ -25,10 +24,10 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/shell-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": ["apps/diagram-e2e/**/*.{js,ts}"]
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["shell"]
+  "implicitDependencies": ["diagram"]
 }
